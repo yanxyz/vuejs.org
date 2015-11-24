@@ -18,9 +18,7 @@ modify({
 function modify (page) {
   const content = fs.readFileSync(page.src, 'utf8')
     .replace(/href="\/blog/g, 'href="http://vuejs.org/blog')
-    .replace(/="\/images\//g, `="${site}/images/`)
-    .replace(/href="\/css/g, `href="${site}/css`)
-    .replace(/src="\/js/g, `src="${site}/js`)
+    .replace(/="\/(images|css|js)/g, `="${site}/$1`)
     .replace(/href="\//g, `href="${page.relative}`)
     .replace('src="todomvc/index.html"', `src="${site}/examples/todomvc/index.html"`)
 
